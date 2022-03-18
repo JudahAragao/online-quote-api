@@ -1,0 +1,32 @@
+{
+  "name": "online-quote-api",
+  "version": "1.0.0",
+  "description": "api to manage budget system",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JudahAragao/online-quote-api.git"
+  },
+  "author": "judah aragão",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JudahAragao/online-quote-api/issues"
+  },
+  "homepage": "https://github.com/JudahAragao/online-quote-api#readme",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-promise-router": "^4.1.1",
+    "pg": "^8.7.3",
+    "sequelize": "^6.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
