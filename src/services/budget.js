@@ -9,7 +9,7 @@ class BudgetService {
     }
 
     async getId(id) {
-        const budget = await this.budget.findOne({ where: { id: id } })
+        const budget = await this.budget.findOne({ where: { budgetId: id } })
         return budget
     }
 
@@ -22,15 +22,7 @@ class BudgetService {
         }
     }
 
-    async updateAll(budgetDTO, referent){
-        try {
-            await referent.update(budgetDTO)
-        } catch (err) {
-            throw err
-        }
-    }
-
-    async disable(budgetDTO, referent){
+    async update(budgetDTO, referent){
         try {
             await referent.update(budgetDTO)
         } catch (err) {

@@ -1,37 +1,38 @@
 const budget = (sequelize, DataTypes) => {
     const Budget = sequelize.define('Budget', {
-        id: {
+        budgetId: {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        myCompany: {
-            type: DataTypes.STRING(200),
-            references: { model: 'publications', key: 'id' },
+        companyId: {
+            type: DataTypes.INTEGER,
+            references: { model: 'company', key: 'companyId' },
             allowNull: false,
             onDelete: 'CASCADE',
             onUpdate: 'CASCADE'
         },
-        myCnpj: {
-            type: DataTypes.STRING(14),
-            allowNull: false
-        },
-        myAddress: {
-            type: DataTypes.STRING(500),
-            allowNull: false
-        },
-        size: {
+        costumerId: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            references: { model: 'costumers', key: 'costumerId' },
+            allowNull: false,
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE'
         },
-        myCellPhone: {
-            type: DataTypes.STRING(14),
-            allowNull: false
+        producstId: {
+            type: DataTypes.INTEGER,
+            references: { model: 'products', key: 'productId' },
+            allowNull: false,
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE'
         },
-        myEmail: {
-            type: DataTypes.STRING(200),
-            allowNull: false
+        servicesId: {
+            type: DataTypes.INTEGER,
+            references: { model: 'services', key: 'serviceId' },
+            allowNull: false,
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE'
         },
         seller: {
             type: DataTypes.STRING(100),
@@ -53,112 +54,8 @@ const budget = (sequelize, DataTypes) => {
             type: DataTypes.STRING(13),
             allowNull: false
         },
-        costumerCompanyName: {
-            type: DataTypes.STRING(200),
-            allowNull: false
-        },
-        costumerName: {
-            type: DataTypes.STRING(100),
-            allowNull: false
-        },
         inTheCareOf: {
             type: DataTypes.STRING(100),
-            allowNull: false
-        },
-        costumerAddress: {
-            type: DataTypes.STRING(300),
-            allowNull: false
-        },
-        costumerCity: {
-            type: DataTypes.STRING(100),
-            allowNull: false
-        },
-        costumerCpfOrCnpj: {
-            type: DataTypes.STRING(14),
-            allowNull: false
-        },
-        costumerZipCode: {
-            type: DataTypes.STRING(10),
-            allowNull: false
-        },
-        costumerState: {
-            type: DataTypes.STRING(100),
-            allowNull: false
-        },
-        email: {
-            type: DataTypes.STRING(200),
-            allowNull: false
-        },
-        productItem: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        productDescription: {
-            type: DataTypes.STRING(200),
-            allowNull: false
-        },
-        productObs: {
-            type: DataTypes.STRING(1000),
-            allowNull: false
-        },
-        productVariation: {
-            type: DataTypes.STRING(200),
-            allowNull: false
-        },
-        productAmount: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        productUnitPrice: {
-            type: DataTypes.FLOAT,
-            allowNull: false
-        },
-        productSubtotal: {
-            type: DataTypes.FLOAT,
-            allowNull: false
-        },
-        productTotalItems: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        productTotalPrice: {
-            type: DataTypes.FLOAT,
-            allowNull: false
-        },
-        serviceItem: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        serviceDescription: {
-            type: DataTypes.STRING(200),
-            allowNull: false
-        },
-        serviceObs: {
-            type: DataTypes.STRING(1000),
-            allowNull: false
-        },
-        serviceVariation: {
-            type: DataTypes.STRING(200),
-            allowNull: false
-        },
-        serviceAmount: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        serviceUnitPrice: {
-            type: DataTypes.FLOAT,
-            allowNull: false
-        },
-        serviceSubtotal: {
-            type: DataTypes.FLOAT,
-            allowNull: false
-        },
-        serviceTotalItems: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        serviceTotalPrice: {
-            type: DataTypes.FLOAT,
             allowNull: false
         },
         dueDate: {
@@ -176,6 +73,11 @@ const budget = (sequelize, DataTypes) => {
         obsBudget: {
             type: DataTypes.STRING(1000),
             allowNull: false
+        },
+        statusBudget: { // 1-pending, 2-aproved, 3-canceled 
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 1
         }
     }, {
         tableName: 'budgets'

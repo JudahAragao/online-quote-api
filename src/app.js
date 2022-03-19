@@ -12,10 +12,10 @@ app.use(cors())
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-    res.json({'hehe':'hehehheheheh'})
+    res.json({'success_msg':'Api de controle de orçamentos'})
 })
 
-sequelize.sync()
+sequelize.sync({ force:true })
     .then(() => console.log('conectado'))
     .catch(e => console.log('error: ' + e))
 
